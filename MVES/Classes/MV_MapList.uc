@@ -470,7 +470,7 @@ function bool IsValidMap( out string MapString, out string reason )
 	}
 	MapName = Left( MapString, iLen);
 
-	if ( History.IsExcluded(MapName, Mutator.MapCostMaxAllow) )
+	if ( History != None && History.IsExcluded(MapName, Mutator.MapCostMaxAllow) )
 	{
 		reason = "map is on cooldown";
 		return False;
