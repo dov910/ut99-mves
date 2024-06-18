@@ -380,8 +380,11 @@ event PostBeginPlay()
 
 	if ( Cmd ~= Left(TravelInfo.TravelString, Len(Cmd) ) )  //CRASH DIDN'T HAPPEN, SETUP GAME
 	{
-		MapList.History.NewMapPlayed( CurrentMap, MapCostAddPerLoad );
-		MapList.History.SaveConfig();
+		if ( MapList.History != None )
+		{
+			MapList.History.NewMapPlayed( CurrentMap, MapCostAddPerLoad );
+			MapList.History.SaveConfig();
+		}
 		CurrentMode = CurrentGame.GameName@"-"@CurrentGame.RuleName;
 		if ( bAutoSetGameName ) 
 		{
